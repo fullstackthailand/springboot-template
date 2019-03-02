@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{admin/layouts/template}">
+<body>
+<div layout:fragment="content" th:remove="tag">
+
+
+<!-- breadcrumb Start -->
+<ol class="breadcrumb">
+ <li class="breadcrumb-item">
+   <a href="#">Users</a>
+ </li>
+ <li class="breadcrumb-item active">Edit</li>
+</ol>
+<!-- breadcrumb End -->
+<th:block th:replace="admin/layouts/partials/flash-message :: flash-message"/>
+
+<div class="card mb-3">
+  <div class="card-header">Update User</div>
+  <div class="card-body">
+    <form method="POST" th:action="@{/admin/user/update}" th:object="${item}">
+
+    <div class="card border-dark">
+          <div class="card-header">
+            Login Information
+          </div>
+          <div class="card-body text-dark">
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input class="form-control" id="email" th:field="*{email}" type="email" value="" aria-describedby="emailHelp" placeholder="Enter email">
+                <span class="text-danger">Email Errors</span>
+              </div>
+
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-6">
+                    <label for="password">Password</label>
+                    <input class="form-control" id="password" name="password" type="password" placeholder="Password">
+                    
+                  </div>
+                  <div class="col-md-6">
+                    <label for="confirm_password">Confirm password</label>
+                    <input class="form-control" id="confirm_password" name="confirm_password" type="password" placeholder="Confirm password">
+                    
+                  </div>
+                </div>
+              </div>
+          </div>
+    </div>
+    <br />
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-md-6">
+            <label for="name">First name</label>
+            <input class="form-control" id="name" th:field="*{name}" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
+
+
+          </div>
+          <div class="col-md-6">
+            <label for="surname">Last name</label>
+            <input class="form-control" id="surname" th:field="*{surname}" value="" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-md-6">
+            <label for="mobile">Mobile</label>
+            <input class="form-control" id="mobile" th:field="*{mobile}" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
+
+
+          </div>
+          <div class="col-md-6">
+            <label for="age">Age</label>
+            <input class="form-control" id="age" th:field="*{age}" value="" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
+
+
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-row">
+          <div class="col-md-6">
+            <label for="address">Address</label>
+            <input class="form-control" id="address" th:field="*{address}" value="" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
+
+
+          </div>
+          <div class="col-md-6">
+            <label for="city">City</label>
+            <select class="form-control" id="city" th:field="*{city}">
+                <option value="">---- Select ----</option>
+                <option value="bangkok">bangkok</option>
+                <option value="nakornpathom">nakornpathom</option>
+            </select>
+            
+          </div>
+        </div>
+      </div>
+
+      <input type="hidden" name="_method" value="PUT">
+      <input type="hidden" name="_token" value="">
+      <input type="submit" value="Submit" class="btn btn-primary">&nbsp;
+      <input type="reset" value="Reset" class="btn btn-danger">
+
+    </form>
+  </div>
+</div>
+
+
+</div>
+</body>
+</html>
