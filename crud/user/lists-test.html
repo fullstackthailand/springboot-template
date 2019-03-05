@@ -16,8 +16,8 @@
 
 
 <!-- #################### Flash Message Start #################### -->
-    <!--<<th:block th:replace="admin/layouts/partials/flash-message :: flash-message"/>-->
-    <!-- #################### Flash Message Start #################### -->
+<th:block th:replace="admin/layouts/partials/flash-message :: flash-message"/>
+<!-- #################### Flash Message Start #################### -->
 
 
 
@@ -50,12 +50,11 @@
              <th>Action</th>
          </tr>
      </tfoot>-->
-
-         <!-- #################### Flash Message Start #################### -->
-         <!--<th:block th:replace="admin/layouts/partials/pagination :: pagination"/>-->
-         <!-- #################### Flash Message Start #################### -->
-
-
+       <tfoot align="right">
+       <tr>
+           <td>Pagination Here</td>
+       </tr>
+       </tfoot>
 
        <tbody>
             <tr th:each="item : ${items}">
