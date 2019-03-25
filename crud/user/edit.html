@@ -20,10 +20,13 @@
         <div class="card-body">
           <form
             method="POST"
-            th:action="@{/admin/user/update}"
-            th:object="${item}"
+            th:action="@{'/admin/user/' + ${id} }"
+            th:object="${user}"
           >
-            <!--<th:block th:replace="admin/layouts/partials/validate-message :: validate-message"/>-->
+            <!----- Show Errors Block ------>
+            <th:block
+              th:replace="admin/layouts/partials/validate-message :: validate-message"
+            />
 
             <div class="card border-dark">
               <div class="card-header">
@@ -32,41 +35,9 @@
               <div class="card-body text-dark">
                 <div class="form-group">
                   <label for="email">Email address</label>
-                  <input
-                    class="form-control"
-                    id="email"
-                    th:field="*{email}"
-                    type="email"
-                    value=""
-                    aria-describedby="emailHelp"
-                    placeholder="Enter email"
-                  />
-                  <span class="text-danger">Email Errors</span>
-                </div>
-
-                <div class="form-group">
-                  <div class="form-row">
-                    <div class="col-md-6">
-                      <label for="password">Password</label>
-                      <input
-                        class="form-control"
-                        id="password"
-                        name="password"
-                        type="password"
-                        placeholder="Password"
-                      />
-                    </div>
-                    <div class="col-md-6">
-                      <label for="confirm_password">Confirm password</label>
-                      <input
-                        class="form-control"
-                        id="confirm_password"
-                        name="confirm_password"
-                        type="password"
-                        placeholder="Confirm password"
-                      />
-                    </div>
-                  </div>
+                  <label class="form-control" id="email" th:text="${email}"
+                    >Email</label
+                  >
                 </div>
               </div>
             </div>
@@ -83,6 +54,12 @@
                     aria-describedby="nameHelp"
                     placeholder="Enter first name"
                   />
+                  <span
+                    th:if="${#fields.hasErrors('name')}"
+                    th:errors="*{name}"
+                    class="text-danger"
+                    >Errors</span
+                  >
                 </div>
                 <div class="col-md-6">
                   <label for="surname">Last name</label>
@@ -95,6 +72,12 @@
                     aria-describedby="nameHelp"
                     placeholder="Enter last name"
                   />
+                  <span
+                    th:if="${#fields.hasErrors('surname')}"
+                    th:errors="*{surname}"
+                    class="text-danger"
+                    >Errors</span
+                  >
                 </div>
               </div>
             </div>
@@ -111,6 +94,12 @@
                     aria-describedby="nameHelp"
                     placeholder="Enter first name"
                   />
+                  <span
+                    th:if="${#fields.hasErrors('mobile')}"
+                    th:errors="*{mobile}"
+                    class="text-danger"
+                    >Errors</span
+                  >
                 </div>
                 <div class="col-md-6">
                   <label for="age">Age</label>
@@ -123,6 +112,12 @@
                     aria-describedby="nameHelp"
                     placeholder="Enter last name"
                   />
+                  <span
+                    th:if="${#fields.hasErrors('age')}"
+                    th:errors="*{age}"
+                    class="text-danger"
+                    >Errors</span
+                  >
                 </div>
               </div>
             </div>
@@ -140,20 +135,38 @@
                     aria-describedby="nameHelp"
                     placeholder="Enter first name"
                   />
+                  <span
+                    th:if="${#fields.hasErrors('address')}"
+                    th:errors="*{address}"
+                    class="text-danger"
+                    >Errors</span
+                  >
                 </div>
                 <div class="col-md-6">
                   <label for="city">City</label>
-                  <select class="form-control" id="city" th:field="*{city}">
-                    <option value="">---- Select ----</option>
-                    <option value="bangkok">bangkok</option>
-                    <option value="nakornpathom">nakornpathom</option>
-                  </select>
+                  <select class="form-control" th:field="*{city}">
+                    <option value=""> --- Select City ---- </option>
+                    <option
+                      th:each="city : ${cities}"
+                      th:value="${city.key}"
+                      th:text="${city.value}"
+                      th:selected="${city == city.key}"
+                    >
+                    </option
+                  ></select>
+
+                  <span
+                    th:if="${#fields.hasErrors('city')}"
+                    th:errors="*{city}"
+                    class="text-danger"
+                    >Errors</span
+                  >
                 </div>
               </div>
             </div>
 
             <input type="hidden" name="_method" value="PUT" />
-            <input type="hidden" name="_token" value="" />
+            <!--<input type="hidden" name="_token" value="">-->
             <input type="submit" value="Submit" class="btn btn-primary" />&nbsp;
             <input type="reset" value="Reset" class="btn btn-danger" />
           </form>
