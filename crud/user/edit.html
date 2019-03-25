@@ -27,6 +27,26 @@
             <th:block
               th:replace="admin/layouts/partials/validate-message :: validate-message"
             />
+            <div>
+              <span
+                th:if="${#fields.hasErrors('password')}"
+                th:errors="*{password}"
+                class="text-danger"
+                >Password Errors</span
+              >
+              <span
+                th:if="${#fields.hasErrors('confirm_password')}"
+                th:errors="*{confirm_password}"
+                class="text-danger"
+                >confirm_password Errors</span
+              >
+              <span
+                th:if="${#fields.hasErrors('email')}"
+                th:errors="*{email}"
+                class="text-danger"
+                >email Errors</span
+              >
+            </div>
 
             <div class="card border-dark">
               <div class="card-header">
