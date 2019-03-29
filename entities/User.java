@@ -7,6 +7,8 @@ import com.training.platform.validators.Extended;
 import com.training.platform.validators.FieldsValueMatch;
 import com.training.platform.validators.UniqueEmail;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
