@@ -17,6 +17,8 @@ import java.util.Date;
 
 @Data
 @Entity
+@EqualsAndHashCode(exclude="shop")
+@ToString(exclude = {"shop"})
 @Table(name = "users")
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
